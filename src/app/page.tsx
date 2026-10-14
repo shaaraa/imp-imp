@@ -7,7 +7,6 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import {
   MapPin,
   Phone,
-  MessageCircle,
   Mail,
   CheckCircle2,
   ChevronRight,
@@ -145,16 +144,6 @@ export default function ComingSoonPage() {
           >
             <Phone className="w-4 h-4 text-emerald-400" />
             <span>Call (010) 320105</span>
-          </a>
-
-          <a
-            href="https://wa.me/37444757071"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium transition-all shadow-sm hover:shadow-md cursor-pointer"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>WhatsApp: +374 44 757071</span>
           </a>
 
           <a
