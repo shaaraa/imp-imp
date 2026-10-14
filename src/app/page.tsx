@@ -1,17 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-} from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -48,24 +41,6 @@ function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export default function ComingSoonPage() {
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes("@")) return;
-
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSubmitted(true);
-      try {
-        localStorage.setItem("imperial_website_notify", email);
-      } catch {}
-    }, 700);
-  };
-
   return (
     <AuroraBackground
       showRadialGradient={true}
@@ -167,59 +142,12 @@ export default function ComingSoonPage() {
           </a>
         </motion.div>
 
-        {/* Minimal Notify Me Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          className="mt-8 w-full max-w-md px-2"
-        >
-          {!isSubmitted ? (
-            <form onSubmit={handleSubscribe} className="relative flex flex-col sm:flex-row gap-2">
-              <div className="relative flex-1">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter email to get launch notification..."
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-3 py-2.5 rounded-full text-xs sm:text-sm bg-white/85 border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 backdrop-blur-sm transition-all shadow-sm"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-70 whitespace-nowrap"
-              >
-                {isLoading ? (
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <>
-                    <span>Notify Me</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </>
-                )}
-              </button>
-            </form>
-          ) : (
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="py-2.5 px-4 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center gap-2 text-xs font-medium backdrop-blur-sm"
-            >
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Thank you! We will notify you the moment our new website goes live.</span>
-            </motion.div>
-          )}
-        </motion.div>
-
         {/* Minimal Yerevan Clinic Details Pill */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-slate-600 bg-white/60 border border-slate-200/60 rounded-2xl py-3 px-6 backdrop-blur-md shadow-sm"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-slate-600 bg-white/60 border border-slate-200/60 rounded-2xl py-3 px-6 backdrop-blur-md shadow-sm"
         >
           <div className="flex items-center gap-1.5">
             <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -237,7 +165,7 @@ export default function ComingSoonPage() {
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.75 }}
+        transition={{ duration: 1, delay: 0.65 }}
         className="w-full text-center py-4 border-t border-slate-200/40 text-xs text-slate-500"
       >
         © 2026 Imperial Implant Center • Yerevan, Armenia. All rights reserved.
